@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe2b835e857a3d1f837603b7c504070f",
-    "content-hash": "5b6a304f7ae7e7580b74c76bbd6f83d6",
+    "hash": "0814fbdf96c3fe0e3cd1fd768d425ee1",
+    "content-hash": "0537938eece08b984c5e0f66b950cae0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1000,6 +1000,165 @@
             "time": "2016-02-06 03:52:05"
         },
         {
+            "name": "phpfastcgi/fastcgi-daemon",
+            "version": "dev-dep",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hason/FastCGIDaemon.git",
+                "reference": "70d0eadd5a8aa0a588d0e1cd4305e79852e1072b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hason/FastCGIDaemon/zipball/70d0eadd5a8aa0a588d0e1cd4305e79852e1072b",
+                "reference": "70d0eadd5a8aa0a588d0e1cd4305e79852e1072b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "psr/http-message": "~1.0",
+                "psr/log": "~1.0",
+                "symfony/console": "~2.5|~3.0",
+                "symfony/http-foundation": "~2.7|~3.0",
+                "zendframework/zend-diactoros": "~1.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPFastCGI\\FastCGIDaemon\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "PHPFastCGI\\Test\\FastCGIDaemon\\": "test/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Carter",
+                    "email": "andrewcarter1992@gmail.com"
+                }
+            ],
+            "description": "A FastCGI daemon written in PHP",
+            "keywords": [
+                "daemon",
+                "fast cgi",
+                "fastcgi",
+                "server"
+            ],
+            "support": {
+                "source": "https://github.com/hason/FastCGIDaemon/tree/dep"
+            },
+            "time": "2016-01-11 13:42:29"
+        },
+        {
+            "name": "phpfastcgi/speedfony-bundle",
+            "version": "dev-dep",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hason/SpeedfonyBundle.git",
+                "reference": "573fd62f046f37233ad791254ebe902c4be823e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hason/SpeedfonyBundle/zipball/573fd62f046f37233ad791254ebe902c4be823e9",
+                "reference": "573fd62f046f37233ad791254ebe902c4be823e9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "phpfastcgi/fastcgi-daemon": "^0.7",
+                "symfony/dependency-injection": "~2.7|~3.0",
+                "symfony/http-kernel": "~2.7|~3.0",
+                "symfony/yaml": "~2.7|~3.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "PHPFastCGI\\SpeedfonyBundle\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Carter",
+                    "email": "andrewcarter1992@gmail.com"
+                }
+            ],
+            "description": "A bundle to integrate a FastCGI daemon with the symfony2 framework",
+            "keywords": [
+                "bundle",
+                "daemon",
+                "fast cgi",
+                "fastcgi",
+                "server",
+                "speedfony"
+            ],
+            "support": {
+                "source": "https://github.com/hason/SpeedfonyBundle/tree/dep"
+            },
+            "time": "2016-01-11 13:22:37"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2015-05-04 20:22:00"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -1827,12 +1986,128 @@
                 "templating"
             ],
             "time": "2016-01-25 21:22:18"
+        },
+        {
+            "name": "zendframework/zend-diactoros",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-diactoros.git",
+                "reference": "4d54fde709664562eb63356f0250d527824d05de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/4d54fde709664562eb63356f0250d527824d05de",
+                "reference": "4d54fde709664562eb63356f0250d527824d05de",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "~1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6",
+                "squizlabs/php_codesniffer": "^2.3.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev",
+                    "dev-develop": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Diactoros\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "PSR HTTP Message implementations",
+            "homepage": "https://github.com/zendframework/zend-diactoros",
+            "keywords": [
+                "http",
+                "psr",
+                "psr-7"
+            ],
+            "time": "2016-01-04 21:37:32"
         }
     ],
-    "packages-dev": null,
-    "aliases": [],
+    "packages-dev": [
+        {
+            "name": "symfony/phpunit-bridge",
+            "version": "v2.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/phpunit-bridge.git",
+                "reference": "855dc0e829fad123966347612b4183e307338c11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/855dc0e829fad123966347612b4183e307338c11",
+                "reference": "855dc0e829fad123966347612b4183e307338c11",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
+            },
+            "type": "symfony-bridge",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Bridge\\PhpUnit\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PHPUnit Bridge",
+            "homepage": "https://symfony.com",
+            "time": "2016-01-06 09:59:23"
+        }
+    ],
+    "aliases": [
+        {
+            "alias": "0.7.x-dev",
+            "alias_normalized": "0.7.9999999.9999999-dev",
+            "version": "dev-dep",
+            "package": "phpfastcgi/fastcgi-daemon"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "phpfastcgi/speedfony-bundle": 20,
+        "phpfastcgi/fastcgi-daemon": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

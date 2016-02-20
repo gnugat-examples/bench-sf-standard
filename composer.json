@@ -10,6 +10,16 @@
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/hason/SpeedfonyBundle"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/hason/FastCGIDaemon"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.0.*",
@@ -20,7 +30,9 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "phpfastcgi/speedfony-bundle": "dev-dep",
+        "phpfastcgi/fastcgi-daemon": "dev-dep as 0.7.x-dev"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^2.7"
