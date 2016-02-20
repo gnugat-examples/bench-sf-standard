@@ -1,68 +1,92 @@
-Symfony Standard Edition
-========================
+# Benchmarking Symfony Standard
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+We, developers, *love* meaningless benchmarks.
+Here's one for the [Symfony Standard Edition](https://github.com/symfony/symfony-standard).
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+## Usage
 
-What's inside?
---------------
+First prepare the environment:
 
-The Symfony Standard Edition is configured with the following defaults:
+    rm -rf var/cache/* var/logs/* vendor
+    composer install -o --no-dev
+    curl http://bench-sf-standard.example.com/
 
-  * An AppBundle you can use to start coding;
+Then use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
+for 10 seconds with 10 concurrent clients:
 
-  * Twig as the only configured template engine;
+    ab -c 10 -t 10 'http://bench-sf-standard.example.com/'
 
-  * Doctrine ORM/DBAL;
+Finally use [blackfire](https://blackfire.io/) to profile the request:
 
-  * Swiftmailer;
+    blackfire curl http://bench-sf-standard.example.com/
 
-  * Annotations enabled for everything.
+## Results
 
-It comes pre-configured with the following bundles:
+| Metric              | Value       |
+|---------------------|-------------|
+| Requests per second | 242.25#/sec |
+| Wall Time           | 27.1ms      |
+| CPU Time            | 20.2ms      |
+| I/O Time            | 6.88ms      |
+| Memory              | 2.09MB      |
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+> Benchmarks run with:
+>
+> * PHP 7 (`7.0.3-5+deb.sury.org~trusty+1`)
+>   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
+>   and *without* [Xdebug](https://xdebug.org/)
+> * Linux 3.13.0-77-generic, Ubuntu 14.04 LTS, x86_64
+> * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+Profiling reveals that the most expensive part is Autoloading, via `spl_autoload_call`:
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+* 80 times
+* inclusive wall time of 10ms (36.99%)
+    * inclusive I/O time of 4.5ms
+    * inclusive CPU time of 5.53ms
+    * inclusive memory use of 435KB
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+Its main callers are:
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+* Swiftmailer
+* ContainerAware EventDispatcher
+* Dependency Injection Container
+* AppKernel (`registerBundles`)
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+## Web Server Configuration
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+Since [PHP built in server](http://php.net/manual/en/features.commandline.webserver.php)
+runs on a single-threaded process, we need to use something else for our benchmarks.
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+We've picked [nginx](https://www.nginx.com/) with [PHP-FPM](http://php-fpm.org/),
+but feel free to use another one. Here's the configuration used:
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+```
+server {
+    listen 80;
+    server_name bench-sf-standard.example.com;
+    root /home/foobar/bench-sf-standard/web;
 
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
+    location / {
+        # try to serve file directly, fallback to app.php
+        try_files $uri /app.php$is_args$args;
+    }
 
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
+    location ~ ^/app\.php(/|$) {
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
 
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
+        include fastcgi_params;
 
-Enjoy!
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
-[1]:  https://symfony.com/doc/3.0/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.0/book/doctrine.html
-[8]:  https://symfony.com/doc/3.0/book/templating.html
-[9]:  https://symfony.com/doc/3.0/book/security.html
-[10]: https://symfony.com/doc/3.0/cookbook/email.html
-[11]: https://symfony.com/doc/3.0/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/3.0/bundles/SensioGeneratorBundle/index.html
+        # Prevents URIs that include the front controller. This will 404:
+        # http://domain.tld/app.php/some-path
+        # Remove the internal directive to allow URIs like this
+        internal;
+    }
+
+    error_log /home/foobar/bench-sf-standard/var/logs/nginx_error.log;
+    access_log /home/foobar/bench-sf-standard/var/logs/nginx_access.log;
+}
+```
