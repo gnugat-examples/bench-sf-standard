@@ -21,13 +21,14 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1042.64#/sec |
-| Time per request                                  | 9.591ms      |
-| Time per request (across all concurrent requests) | 0.959ms      |
+| Requests per second                               | 1115.87#/sec |
+| Time per request                                  | 8.962ms      |
+| Time per request (across all concurrent requests) | 0.896ms      |
 
 > Benchmarks run with:
 >
 > * PHP 7 (`7.0.3-5+deb.sury.org~trusty+1`)
+>   and with [OPcache](http://php.net/manual/en/book.opcache.php)
 >   and *without* [Xdebug](https://xdebug.org/)
 > * Linux 3.13.0-77-generic, Ubuntu 14.04 LTS, x86_64
 > * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
