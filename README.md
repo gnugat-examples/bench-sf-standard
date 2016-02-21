@@ -9,7 +9,7 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
-    php bin/console speedfony:run --port 5000 --env="prod" --no-debug
+    php bin/server.php
     curl http://bench-sf-standard.example.com/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -21,9 +21,9 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1115.87#/sec |
-| Time per request                                  | 8.962ms      |
-| Time per request (across all concurrent requests) | 0.896ms      |
+| Requests per second                               | 1173.60#/sec |
+| Time per request                                  | 8.521ms      |
+| Time per request (across all concurrent requests) | 0.852ms      |
 
 > Benchmarks run with:
 >
