@@ -31,6 +31,14 @@ foreach ($loader->getClassMap() as $fqcn => $path) {
 }
 
 $kernel = new AppKernel('prod', false);
+
+// Preloading all services
+$kernel->boot();
+$container = $kernel->getContainer();
+foreach ($container->getServiceIds() as $serviceId) {
+    $container->get($serviceId);
+}
+
 $application = new Application($kernel);
 $application->run(new ArrayInput(array(
     'speedfony:run',
