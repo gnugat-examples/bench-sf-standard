@@ -2,7 +2,7 @@
 <?php
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\ArgvInput;
 
 set_time_limit(0);
 
@@ -40,9 +40,5 @@ foreach ($container->getServiceIds() as $serviceId) {
 }
 
 $application = new Application($kernel);
-$application->run(new ArrayInput(array(
-    'speedfony:run',
-    '--port' => 5000,
-    '--env' => 'prod',
-    '--no-debug' => true,
-)));
+$application->setDefaultCommand('speedfony:run');
+$application->run(new ArgvInput());

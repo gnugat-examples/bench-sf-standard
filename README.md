@@ -9,7 +9,10 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
-    php bin/server.php
+    php bin/server.php speedfony:run --no-debug --port=5000
+    php bin/server.php speedfony:run --no-debug --port=5001
+    php bin/server.php speedfony:run --no-debug --port=5002
+    php bin/server.php speedfony:run --no-debug --port=5003
     curl http://bench-sf-standard.example.com/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -21,9 +24,9 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1185.59#/sec |
-| Time per request                                  | 8.435ms      |
-| Time per request (across all concurrent requests) | 0.843ms      |
+| Requests per second                               | 1308.63#/sec |
+| Time per request                                  | 7.642ms      |
+| Time per request (across all concurrent requests) | 0.764ms      |
 
 > Benchmarks run with:
 >
@@ -44,6 +47,13 @@ We've picked [nginx](https://www.nginx.com/) with [PHP-FPM](http://php-fpm.org/)
 but feel free to use another one. Here's the configuration used:
 
 ```
+upstream workers {
+    server localhost:5000;
+    server localhost:5001;
+    server localhost:5002;
+    server localhost:5003;
+}
+
 server {
     listen 80;
     server_name bench-sf-standard.example.com;
@@ -55,7 +65,7 @@ server {
     }
 
     location ~ ^/app\.php(/|$) {
-        fastcgi_pass localhost:5000;
+        fastcgi_pass @workers;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
 
         include fastcgi_params;
