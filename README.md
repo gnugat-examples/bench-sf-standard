@@ -9,26 +9,21 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
+    vendor/bin/aerys -c app/config/aerys.php
     curl http://bench-sf-standard.example.com/
 
-Then use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
+And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
 for 10 seconds with 10 concurrent clients:
 
     ab -c 10 -t 10 'http://bench-sf-standard.example.com/'
 
-Finally use [blackfire](https://blackfire.io/) to profile the request:
-
-    blackfire curl http://bench-sf-standard.example.com/
-
 ## Results
 
-| Metric              | Value       |
-|---------------------|-------------|
-| Requests per second | 242.25#/sec |
-| Wall Time           | 27.1ms      |
-| CPU Time            | 20.2ms      |
-| I/O Time            | 6.88ms      |
-| Memory              | 2.09MB      |
+| Metric                                            | Value        |
+|---------------------------------------------------|--------------|
+| Requests per second                               | 1475.28#/sec |
+| Time per request                                  | 6.778ms      |
+| Time per request (across all concurrent requests) | 0.678ms      |
 
 > Benchmarks run with:
 >
@@ -38,20 +33,7 @@ Finally use [blackfire](https://blackfire.io/) to profile the request:
 > * Linux 3.13.0-77-generic, Ubuntu 14.04 LTS, x86_64
 > * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
 
-Profiling reveals that the most expensive part is Autoloading, via `spl_autoload_call`:
-
-* 80 times
-* inclusive wall time of 10ms (36.99%)
-    * inclusive I/O time of 4.5ms
-    * inclusive CPU time of 5.53ms
-    * inclusive memory use of 435KB
-
-Its main callers are:
-
-* Swiftmailer
-* ContainerAware EventDispatcher
-* Dependency Injection Container
-* AppKernel (`registerBundles`)
+> **Note**: Profiling using blackfire failed.
 
 ## Web Server Configuration
 
@@ -68,22 +50,7 @@ server {
     root /home/foobar/bench-sf-standard/web;
 
     location / {
-        # try to serve file directly, fallback to app.php
-        try_files $uri /app.php$is_args$args;
-    }
-
-    location ~ ^/app\.php(/|$) {
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-
-        include fastcgi_params;
-
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-
-        # Prevents URIs that include the front controller. This will 404:
-        # http://domain.tld/app.php/some-path
-        # Remove the internal directive to allow URIs like this
-        internal;
+        proxy_pass http://bench-sf-standard.example.com:5000;
     }
 
     error_log /home/foobar/bench-sf-standard/var/logs/nginx_error.log;
