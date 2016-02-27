@@ -21,9 +21,9 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1475.28#/sec |
-| Time per request                                  | 6.778ms      |
-| Time per request (across all concurrent requests) | 0.678ms      |
+| Requests per second                               | 1481.44#/sec |
+| Time per request                                  | 6.750ms      |
+| Time per request (across all concurrent requests) | 0.675ms      |
 
 > Benchmarks run with:
 >

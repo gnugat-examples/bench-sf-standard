@@ -11,6 +11,12 @@ AnnotationRegistry::registerLoader([$loader, 'loadClass']);
 $kernel = new AppKernel('prod', false);
 $kernel->boot();
 
+// Preloading all services
+$container = $kernel->getContainer();
+foreach ($container->getServiceIds() as $serviceId) {
+    $container->get($serviceId);
+}
+
 const AERYS_OPTIONS = [
     'user' => 'gnucat',
 ];
