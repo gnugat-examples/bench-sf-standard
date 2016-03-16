@@ -10,6 +10,16 @@
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/gnugat/php-pm.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gnugat/php-pm-httpkernel.git"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.0.*",
@@ -20,7 +30,10 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "stack/builder": "dev-master",
+        "php-pm/php-pm": "dev-symfony-3",
+        "php-pm/httpkernel-adapter": "dev-symfony-3"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^2.7"
