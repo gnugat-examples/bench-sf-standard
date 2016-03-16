@@ -9,7 +9,10 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
-    php bin/react.php
+    REACT_PORT=1337 php bin/react.php
+    REACT_PORT=1338 php bin/react.php
+    REACT_PORT=1339 php bin/react.php
+    REACT_PORT=1340 php bin/react.php
     curl http://bench-sf-standard.example.com/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -17,17 +20,13 @@ for 10 seconds with 10 concurrent clients:
 
     ab -c 10 -t 10 'http://bench-sf-standard.example.com/'
 
-Finally use [blackfire](https://blackfire.io/) to profile the request:
-
-    blackfire curl http://bench-sf-standard.example.com/
-
 ## Results
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1530.45#/sec |
-| Time per request                                  | 6.534ms      |
-| Time per request (across all concurrent requests) | 0.653ms      |
+| Requests per second                               | 1522.32#/sec |
+| Time per request                                  | 6.569ms      |
+| Time per request (across all concurrent requests) | 0.657ms      |
 
 > Benchmarks run with:
 >
@@ -48,31 +47,23 @@ We've picked [nginx](https://www.nginx.com/) with [PHP-FPM](http://php-fpm.org/)
 but feel free to use another one. Here's the configuration used:
 
 ```
+upstream workers {
+    server localhost:1337;
+    server localhost:1338;
+    server localhost:1339;
+    server localhost:1340;
+}
+
 server {
     listen 80;
     server_name bench-sf-standard.example.com;
-    root /home/foobar/bench-sf-standard/web;
+    root /home/gnucat/Projects/tmp/bench-sf-standard/web;
 
     location / {
-        # try to serve file directly, fallback to app.php
-        try_files $uri /app.php$is_args$args;
+        proxy_pass http://workers;
     }
 
-    location ~ ^/app\.php(/|$) {
-        fastcgi_pass localhost:1337;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-
-        include fastcgi_params;
-
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-
-        # Prevents URIs that include the front controller. This will 404:
-        # http://domain.tld/app.php/some-path
-        # Remove the internal directive to allow URIs like this
-        internal;
-    }
-
-    error_log /home/foobar/bench-sf-standard/var/logs/nginx_error.log;
-    access_log /home/foobar/bench-sf-standard/var/logs/nginx_access.log;
+    error_log /home/gnucat/Projects/tmp/bench-sf-standard/var/logs/nginx_error.log;
+    access_log /home/gnucat/Projects/tmp/bench-sf-standard/var/logs/nginx_access.log;
 }
 ```

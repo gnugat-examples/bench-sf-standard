@@ -50,5 +50,5 @@ $http = new React\Http\Server($socket);
 
 $http->on('request', $app);
 
-$socket->listen(1337);
+$socket->listen(getenv('REACT_PORT') ?: 1337);
 $loop->run();
