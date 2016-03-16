@@ -3,13 +3,27 @@
 use Symfony\Component\HttpFoundation\Request;
 
 $loader = require __DIR__.'/../app/autoload.php';
-include_once __DIR__.'/../var/bootstrap.php.cache';
 
+// "optional" dependencies that weren't included
+$toIgnore = array(
+    'Doctrine\Bundle\DoctrineCacheBundle\Acl\Model\AclCache',
+);
+// Preloading all classes
+foreach ($loader->getClassMap() as $fqcn => $path) {
+    $isTest = (1 === preg_match('/Test/', $fqcn));
+    $isFixture = (1 === preg_match('/Fixture/', $fqcn));
+    $isIgnored = (true === in_array($fqcn, $toIgnore, true));
+    if ($isIgnored || $isTest || $isFixture) {
+        // Skipping test classes as PHPUnit will be missing, resulting in Fatal error
+        continue;
+    }
+    if (false === class_exists($fqcn) && false === interface_exists($fqcn) && false === trait_exists($fqcn)) {
+        $loader->loadClass($fqcn);
+    }
+}
 
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
-
-$i = 0;
 
 $app = function ($request, $response) use ($kernel) {
     $sfRequest = Request::create(
