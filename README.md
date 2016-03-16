@@ -25,9 +25,9 @@ Finally use [blackfire](https://blackfire.io/) to profile the request:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1404.62#/sec |
-| Time per request                                  | 7.119ms      |
-| Time per request (across all concurrent requests) | 0.712ms      |
+| Requests per second                               | 1530.45#/sec |
+| Time per request                                  | 6.534ms      |
+| Time per request (across all concurrent requests) | 0.653ms      |
 
 > Benchmarks run with:
 >

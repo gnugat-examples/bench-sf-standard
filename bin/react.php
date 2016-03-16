@@ -23,7 +23,13 @@ foreach ($loader->getClassMap() as $fqcn => $path) {
 }
 
 $kernel = new AppKernel('prod', false);
-$kernel->loadClassCache();
+
+// Preloading all services
+$kernel->boot();
+$container = $kernel->getContainer();
+foreach ($container->getServiceIds() as $serviceId) {
+    $container->get($serviceId);
+}
 
 $app = function ($request, $response) use ($kernel) {
     $sfRequest = Request::create(
