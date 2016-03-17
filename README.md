@@ -9,6 +9,7 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
+    bin/console cache:clear -e=prod --no-dev
     curl http://bench-sf-standard.example.com/
 
 Then use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -22,6 +23,22 @@ Finally use [blackfire](https://blackfire.io/) to profile the request:
 
 ## Results
 
+| Metric                                            | Value        |
+|---------------------------------------------------|--------------|
+| Requests per second                               |  242.25#/sec |
+| Time per request                                  | 35.428ms     |
+| Time per request (across all concurrent requests) | 3.543ms      |
+
+> Benchmarks run with:
+>
+> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+3`)
+>   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
+>   and *without* [Xdebug](https://xdebug.org/)
+> * Linux 3.13.0-83-generic, Ubuntu 14.04 LTS, x86_64
+> * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
+
+### Profiling
+
 | Metric              | Value       |
 |---------------------|-------------|
 | Requests per second | 242.25#/sec |
@@ -29,14 +46,6 @@ Finally use [blackfire](https://blackfire.io/) to profile the request:
 | CPU Time            | 20.2ms      |
 | I/O Time            | 6.88ms      |
 | Memory              | 2.09MB      |
-
-> Benchmarks run with:
->
-> * PHP 7 (`7.0.3-5+deb.sury.org~trusty+1`)
->   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
->   and *without* [Xdebug](https://xdebug.org/)
-> * Linux 3.13.0-77-generic, Ubuntu 14.04 LTS, x86_64
-> * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
 
 Profiling reveals that the most expensive part is Autoloading, via `spl_autoload_call`:
 
