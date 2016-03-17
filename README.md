@@ -9,7 +9,8 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
-    ./vendor/bin/ppm start . --bridge=httpKernel --workers=4
+    bin/console cache:clear -e=prod --no-debug
+    ./vendor/bin/ppm start . --bridge=httpKernel --workers=4 --app-env=prod
     curl http://bench-sf-standard.example.com/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -21,9 +22,9 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1548.54#/sec |
-| Time per request                                  | 6.458ms      |
-| Time per request (across all concurrent requests) | 0.646ms      |
+| Requests per second                               | 1609.54#/sec |
+| Time per request                                  | 6.213ms      |
+| Time per request (across all concurrent requests) | 0.621ms      |
 
 > Benchmarks run with:
 >
