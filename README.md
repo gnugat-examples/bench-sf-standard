@@ -9,6 +9,7 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
+    bin/console cache:clear -e=prod --no-debug
     REACT_PORT=1337 php bin/react.php
     REACT_PORT=1338 php bin/react.php
     REACT_PORT=1339 php bin/react.php
@@ -24,9 +25,13 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1522.32#/sec |
-| Time per request                                  | 6.569ms      |
-| Time per request (across all concurrent requests) | 0.657ms      |
+| Requests per second                               | 1613.82#/sec |
+| Time per request                                  | 6.196ms      |
+| Time per request (across all concurrent requests) | 0.620ms      |
+
+Requests per second:    1613.82 [#/sec] (mean)
+Time per request:       6.196 [ms] (mean)
+Time per request:       0.620 [ms] (mean, across all concurrent requests)
 
 > Benchmarks run with:
 >
