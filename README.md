@@ -9,6 +9,7 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
+    php bin/console cache:clear -e=prod --no-debug
     php bin/server.php speedfony:run --no-debug --port=5000
     php bin/server.php speedfony:run --no-debug --port=5001
     php bin/server.php speedfony:run --no-debug --port=5002
@@ -30,10 +31,10 @@ for 10 seconds with 10 concurrent clients:
 
 > Benchmarks run with:
 >
-> * PHP 7 (`7.0.3-5+deb.sury.org~trusty+1`)
+> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+3`)
 >   and with [OPcache](http://php.net/manual/en/book.opcache.php)
 >   and *without* [Xdebug](https://xdebug.org/)
-> * Linux 3.13.0-77-generic, Ubuntu 14.04 LTS, x86_64
+> * Linux 3.13.0-83-generic, Ubuntu 14.04 LTS, x86_64
 > * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
 
 > **Note**: Profiling using blackfire failed.
@@ -65,7 +66,7 @@ server {
     }
 
     location ~ ^/app\.php(/|$) {
-        fastcgi_pass @workers;
+        fastcgi_pass workers;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
 
         include fastcgi_params;

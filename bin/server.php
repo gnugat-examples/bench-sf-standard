@@ -9,26 +9,7 @@ set_time_limit(0);
 /**
  * @var Composer\Autoload\ClassLoader $loader
  */
-$loader = require __DIR__.'/../app/autoload.php';
-
-// "optional" dependencies that weren't included
-$toIgnore = array(
-    'Doctrine\Bundle\DoctrineCacheBundle\Acl\Model\AclCache',
-);
-
-// Preloading all classes
-foreach ($loader->getClassMap() as $fqcn => $path) {
-    $isTest = (1 === preg_match('/Test/', $fqcn));
-    $isFixture = (1 === preg_match('/Fixture/', $fqcn));
-    $isIgnored = (true === in_array($fqcn, $toIgnore, true));
-    if ($isIgnored || $isTest || $isFixture) {
-        // Skipping test classes as PHPUnit will be missing, resulting in Fatal error
-        continue;
-    }
-    if (false === class_exists($fqcn) && false === interface_exists($fqcn) && false === trait_exists($fqcn)) {
-        $loader->loadClass($fqcn);
-    }
-}
+require __DIR__.'/../app/autoload.php';
 
 $kernel = new AppKernel('prod', false);
 
