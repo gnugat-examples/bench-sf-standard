@@ -13,10 +13,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/gnugat/php-pm.git"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/gnugat/php-pm-httpkernel.git"
         }
     ],
@@ -31,9 +27,9 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "stack/builder": "dev-master",
-        "php-pm/php-pm": "dev-symfony-3",
-        "php-pm/httpkernel-adapter": "dev-symfony-3"
+        "react/http": "dev-master",
+        "php-pm/php-pm": "dev-master",
+        "php-pm/httpkernel-adapter": "dev-master"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^2.7"

@@ -1,0 +1,12 @@
+{
+    "bridge": "HttpKernel",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "workers": 4,
+    "app-env": "prod",
+    "debug": 0,
+    "logging": 0,
+    "bootstrap": "symfony",
+    "max-requests": 10000,
+    "php-cgi": "/usr/bin/php-cgi"
+}

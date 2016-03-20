@@ -10,7 +10,7 @@ First prepare the environment:
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
     bin/console cache:clear -e=prod --no-debug
-    ./vendor/bin/ppm start . --bridge=httpKernel --workers=4 --app-env=prod
+    ./vendor/bin/ppm start .
     curl http://bench-sf-standard.example.com/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -22,13 +22,13 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1609.54#/sec |
-| Time per request                                  | 6.213ms      |
-| Time per request (across all concurrent requests) | 0.621ms      |
+| Requests per second                               | 560.69#/sec  |
+| Time per request                                  | 17.835ms     |
+| Time per request (across all concurrent requests) | 1.784ms      |
 
 > Benchmarks run with:
 >
-> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+3`)
+> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+5`)
 >   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
 >   and *without* [Xdebug](https://xdebug.org/)
 > * Linux 3.13.0-83-generic, Ubuntu 14.04 LTS, x86_64

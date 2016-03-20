@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1ee47dc52af2f815302079750181a35d",
-    "content-hash": "5f4b24ebac2f0afe3f5148ebfd88153c",
+    "hash": "5d477ed9617d6761640ea309c89a9f2f",
+    "content-hash": "6f8eb6ecbcb3c160e3a9a60d88b05fd6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -979,6 +979,48 @@
             "time": "2014-01-12 16:20:24"
         },
         {
+            "name": "mkraemer/react-pcntl",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mkraemer/react-pcntl.git",
+                "reference": "184ccb1acad5e7209ee383979be0bff0c2a50a39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mkraemer/react-pcntl/zipball/184ccb1acad5e7209ee383979be0bff0c2a50a39",
+                "reference": "184ccb1acad5e7209ee383979be0bff0c2a50a39",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "2.0.*",
+                "ext-pcntl": "*",
+                "react/event-loop": "0.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MKraemer": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marius Krämer",
+                    "email": "marius@marius-kraemer.de"
+                }
+            ],
+            "description": "PCNTL bindings for ReactPHP",
+            "keywords": [
+                "pcntl",
+                "react"
+            ],
+            "time": "2014-08-26 12:57:41"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.18.1",
             "source": {
@@ -1058,16 +1100,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.3.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/ff76e1a660669bb56ba74ba0583fd8d41417bf39",
-                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -1102,24 +1144,23 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-17 16:11:57"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "php-pm/httpkernel-adapter",
-            "version": "dev-symfony-3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gnugat/php-pm-httpkernel.git",
-                "reference": "f79de5e876bfc8fc6480ba9c29fee8265bfe02ed"
+                "reference": "55f846c5b62fdf88e4b2188fcc08e262b834106b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gnugat/php-pm-httpkernel/zipball/f79de5e876bfc8fc6480ba9c29fee8265bfe02ed",
-                "reference": "f79de5e876bfc8fc6480ba9c29fee8265bfe02ed",
+                "url": "https://api.github.com/repos/gnugat/php-pm-httpkernel/zipball/55f846c5b62fdf88e4b2188fcc08e262b834106b",
+                "reference": "55f846c5b62fdf88e4b2188fcc08e262b834106b",
                 "shasum": ""
             },
             "require": {
-                "stack/builder": "^1.0",
                 "symfony/http-foundation": "^2.6|^3.0",
                 "symfony/http-kernel": "^2.6|^3.0"
             },
@@ -1130,29 +1171,40 @@
                 }
             },
             "support": {
-                "source": "https://github.com/gnugat/php-pm-httpkernel/tree/symfony-3"
+                "source": "https://github.com/gnugat/php-pm-httpkernel/tree/master"
             },
-            "time": "2016-03-16 20:38:18"
+            "time": "2016-03-20 13:43:52"
         },
         {
             "name": "php-pm/php-pm",
-            "version": "dev-symfony-3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/gnugat/php-pm.git",
-                "reference": "73d08b9d86663e690f668d046d8b2167e9673786"
+                "url": "https://github.com/php-pm/php-pm.git",
+                "reference": "cae0a0419f24355161c45ff6b6ef20dcb13e0c2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gnugat/php-pm/zipball/73d08b9d86663e690f668d046d8b2167e9673786",
-                "reference": "73d08b9d86663e690f668d046d8b2167e9673786",
+                "url": "https://api.github.com/repos/php-pm/php-pm/zipball/cae0a0419f24355161c45ff6b6ef20dcb13e0c2d",
+                "reference": "cae0a0419f24355161c45ff6b6ef20dcb13e0c2d",
                 "shasum": ""
             },
             "require": {
-                "react/react": "^0.4",
-                "symfony/console": "^2.6|^3.0"
+                "mkraemer/react-pcntl": "2.0.*",
+                "react/event-loop": "^0.4",
+                "react/http": "dev-master",
+                "react/socket-client": "^0.5.0",
+                "react/stream": "^0.4",
+                "symfony/console": "^2.6|^3.0",
+                "symfony/process": "^2.6|^3.0"
+            },
+            "require-dev": {
+                "php-pm/httpkernel-adapter": "dev-master"
             },
             "suggest": {
+                "ext-event": "Allows for use of a more performant event-loop implementation.",
+                "ext-libev": "Allows for use of a more performant event-loop implementation.",
+                "ext-libevent": "Allows for use of a more performant event-loop implementation.",
                 "php-pm/httpkernel-adapter": "HttpKernel adapter for Symfony and Laravel frameworks",
                 "php-pm/zend-adapter": "Zend application framework adapter"
             },
@@ -1165,10 +1217,8 @@
                     "PHPPM\\": ""
                 }
             },
-            "support": {
-                "source": "https://github.com/gnugat/php-pm/tree/symfony-3"
-            },
-            "time": "2016-03-16 20:36:12"
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2016-03-20 15:07:10"
         },
         {
             "name": "psr/http-message",
@@ -1292,47 +1342,6 @@
             "time": "2016-02-25 18:17:16"
         },
         {
-            "name": "react/child-process",
-            "version": "v0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/child-process.git",
-                "reference": "8bf211533bcbb2034e00528a47400367570dc3d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/8bf211533bcbb2034e00528a47400367570dc3d7",
-                "reference": "8bf211533bcbb2034e00528a47400367570dc3d7",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~2.0",
-                "php": ">=5.4.0",
-                "react/event-loop": "0.4.*",
-                "react/stream": "0.4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\ChildProcess\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for executing child processes.",
-            "keywords": [
-                "process"
-            ],
-            "time": "2014-02-02 01:11:26"
-        },
-        {
             "name": "react/dns",
             "version": "v0.4.2",
             "source": {
@@ -1420,16 +1429,16 @@
         },
         {
             "name": "react/http",
-            "version": "v0.4.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http.git",
-                "reference": "f575989d67b7db0a65f5dd7e431d8f47af6c2f7b"
+                "reference": "545723837ceed39cbd81e479ab98198bb2c5893b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http/zipball/f575989d67b7db0a65f5dd7e431d8f47af6c2f7b",
-                "reference": "f575989d67b7db0a65f5dd7e431d8f47af6c2f7b",
+                "url": "https://api.github.com/repos/reactphp/http/zipball/545723837ceed39cbd81e479ab98198bb2c5893b",
+                "reference": "545723837ceed39cbd81e479ab98198bb2c5893b",
                 "shasum": ""
             },
             "require": {
@@ -1458,52 +1467,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2015-05-21 20:12:09"
-        },
-        {
-            "name": "react/http-client",
-            "version": "v0.4.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/http-client.git",
-                "reference": "6a33db46e64aac19bec3255436f4960886833062"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/6a33db46e64aac19bec3255436f4960886833062",
-                "reference": "6a33db46e64aac19bec3255436f4960886833062",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~2.0",
-                "guzzlehttp/psr7": "^1.0",
-                "php": ">=5.4.0",
-                "react/dns": "0.4.*",
-                "react/event-loop": "0.4.*",
-                "react/promise": "~2.2",
-                "react/socket-client": "0.4.*",
-                "react/stream": "0.4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\HttpClient\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Asynchronous HTTP client library.",
-            "keywords": [
-                "http"
-            ],
-            "time": "2016-03-08 12:15:41"
+            "time": "2015-12-28 14:55:30"
         },
         {
             "name": "react/promise",
@@ -1550,59 +1514,6 @@
             "time": "2016-02-26 19:09:02"
         },
         {
-            "name": "react/react",
-            "version": "v0.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/react.git",
-                "reference": "457b6b8a16a37c11278cac0870d6d2ff911c5765"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/react/zipball/457b6b8a16a37c11278cac0870d6d2ff911c5765",
-                "reference": "457b6b8a16a37c11278cac0870d6d2ff911c5765",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "react/cache": "0.4.*",
-                "react/child-process": "0.4.*",
-                "react/dns": "0.4.*",
-                "react/event-loop": "0.4.*",
-                "react/http": "0.4.*",
-                "react/http-client": "0.4.*",
-                "react/promise": "~2.1",
-                "react/socket": "0.4.*",
-                "react/socket-client": "0.4.*",
-                "react/stream": "0.4.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-event": "Allows for use of a more performant event-loop implementation.",
-                "ext-libev": "Allows for use of a more performant event-loop implementation.",
-                "ext-libevent": "Allows for use of a more performant event-loop implementation."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Nuclear Reactor written in PHP.",
-            "keywords": [
-                "asynchronous",
-                "event-loop",
-                "reactor"
-            ],
-            "time": "2014-12-11 02:06:55"
-        },
-        {
             "name": "react/socket",
             "version": "v0.4.3",
             "source": {
@@ -1645,31 +1556,29 @@
         },
         {
             "name": "react/socket-client",
-            "version": "v0.4.4",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "3ca814d7e03e2a5bffeaa5773423107957a8aece"
+                "reference": "4ed32f2ce1e732586783c7ebd10b7d75386f2588"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/3ca814d7e03e2a5bffeaa5773423107957a8aece",
-                "reference": "3ca814d7e03e2a5bffeaa5773423107957a8aece",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/4ed32f2ce1e732586783c7ebd10b7d75386f2588",
+                "reference": "4ed32f2ce1e732586783c7ebd10b7d75386f2588",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "react/dns": "0.4.*",
-                "react/event-loop": "0.4.*",
-                "react/promise": "~2.0",
-                "react/stream": "0.4.*"
+                "php": ">=5.3.0",
+                "react/dns": "0.4.*|0.3.*",
+                "react/event-loop": "0.4.*|0.3.*",
+                "react/promise": "~2.0|~1.1",
+                "react/stream": "0.4.*|0.3.*"
+            },
+            "require-dev": {
+                "clue/block-react": "~1.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\SocketClient\\": "src"
@@ -1683,7 +1592,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2015-09-23 22:40:04"
+            "time": "2016-03-19 13:11:48"
         },
         {
             "name": "react/stream",
@@ -1890,55 +1799,6 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2015-11-07 08:07:40"
-        },
-        {
-            "name": "stack/builder",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stackphp/builder.git",
-                "reference": "6f40fdee35a0b7a5cfb616daececb415d4c1f75f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stackphp/builder/zipball/6f40fdee35a0b7a5cfb616daececb415d4c1f75f",
-                "reference": "6f40fdee35a0b7a5cfb616daececb415d4c1f75f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "symfony/http-foundation": "~2.1|~3.0",
-                "symfony/http-kernel": "~2.1|~3.0"
-            },
-            "require-dev": {
-                "silex/silex": "~1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Stack": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Igor Wiedler",
-                    "email": "igor@wiedler.ch"
-                }
-            ],
-            "description": "Builder for stack middlewares based on HttpKernelInterface.",
-            "keywords": [
-                "stack"
-            ],
-            "time": "2016-01-24 16:24:27"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2645,7 +2505,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "stack/builder": 20,
+        "react/http": 20,
         "php-pm/php-pm": 20,
         "php-pm/httpkernel-adapter": 20
     },
