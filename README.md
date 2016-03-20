@@ -25,17 +25,13 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 1613.82#/sec |
-| Time per request                                  | 6.196ms      |
-| Time per request (across all concurrent requests) | 0.620ms      |
-
-Requests per second:    1613.82 [#/sec] (mean)
-Time per request:       6.196 [ms] (mean)
-Time per request:       0.620 [ms] (mean, across all concurrent requests)
+| Requests per second                               | 1616.54#/sec |
+| Time per request                                  | 6.186ms      |
+| Time per request (across all concurrent requests) | 0.619ms      |
 
 > Benchmarks run with:
 >
-> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+3`)
+> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+5`)
 >   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
 >   and *without* [Xdebug](https://xdebug.org/)
 > * Linux 3.13.0-83-generic, Ubuntu 14.04 LTS, x86_64
