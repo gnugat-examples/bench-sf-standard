@@ -9,7 +9,7 @@ First prepare the environment:
 
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
-    bin/console cache:clear -e=prod --no-dev
+    bin/console cache:clear -e=prod
     curl http://bench-sf-standard.example.com/
 
 Then use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -25,17 +25,17 @@ Finally use [blackfire](https://blackfire.io/) to profile the request:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               |  242.25#/sec |
-| Time per request                                  | 35.428ms     |
-| Time per request (across all concurrent requests) | 3.543ms      |
+| Requests per second                               |  690.84#/sec |
+| Time per request                                  | 14.475ms     |
+| Time per request (across all concurrent requests) | 1.448ms      |
 
 > Benchmarks run with:
 >
-> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+3`)
+> * PHP 7 (`7.0.4-7+deb.sury.org~trusty+2`)
 >   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
 >   and *without* [Xdebug](https://xdebug.org/)
-> * Linux 3.13.0-83-generic, Ubuntu 14.04 LTS, x86_64
-> * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
+> * Linux 3.13.0-83-generic, Ubuntu 14.04.4 LTS, x86_64
+> * [Lenovo Yoga 13](http://shop.lenovo.com/il/en/laptops/lenovo/yoga/yoga-13/#tab-tech_specs), with core i7
 
 ### Profiling
 
