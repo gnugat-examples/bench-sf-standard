@@ -4,9 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe2b835e857a3d1f837603b7c504070f",
-    "content-hash": "5b6a304f7ae7e7580b74c76bbd6f83d6",
+    "hash": "418072dbbb44d92e8252d943a8cfcbb4",
+    "content-hash": "8d06b0a4b151766295e359ab6c06d4bf",
     "packages": [
+        {
+            "name": "daverandom/libdns",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DaveRandom/LibDNS.git",
+                "reference": "e935e8caa5ff30122bcbeb8b4ce567fa14cdf063"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DaveRandom/LibDNS/zipball/e935e8caa5ff30122bcbeb8b4ce567fa14cdf063",
+                "reference": "e935e8caa5ff30122bcbeb8b4ce567fa14cdf063",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LibDNS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "DNS protocol implementation written in pure PHP",
+            "keywords": [
+                "dns"
+            ],
+            "time": "2015-04-02 15:42:15"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.7",
@@ -774,6 +807,363 @@
             "time": "2016-01-05 21:34:58"
         },
         {
+            "name": "icicleio/dns",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icicleio/dns.git",
+                "reference": "31ca939e2661f87bd807c54be0e7ad1762a5b14a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icicleio/dns/zipball/31ca939e2661f87bd807c54be0e7ad1762a5b14a",
+                "reference": "31ca939e2661f87bd807c54be0e7ad1762a5b14a",
+                "shasum": ""
+            },
+            "require": {
+                "daverandom/libdns": "^1",
+                "icicleio/icicle": "~2.0",
+                "icicleio/socket": "~2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~5.0",
+                "symfony/yaml": "^2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icicle\\Dns\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@icicle.io"
+                }
+            ],
+            "description": "Asynchronous DNS for Icicle.",
+            "homepage": "http://icicle.io",
+            "keywords": [
+                "async",
+                "asynchronous",
+                "dns",
+                "resolver"
+            ],
+            "time": "2015-12-07 05:49:04"
+        },
+        {
+            "name": "icicleio/http",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icicleio/http.git",
+                "reference": "4e97ee4d672d77e34a59518a3e3e7dd5b9738dd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icicleio/http/zipball/4e97ee4d672d77e34a59518a3e3e7dd5b9738dd0",
+                "reference": "4e97ee4d672d77e34a59518a3e3e7dd5b9738dd0",
+                "shasum": ""
+            },
+            "require": {
+                "icicleio/dns": "^2.0",
+                "icicleio/icicle": "^2.0",
+                "icicleio/log": "^2.0",
+                "icicleio/socket": "^2.0",
+                "icicleio/stream": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0",
+                "symfony/yaml": "^2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icicle\\Http\\": "src"
+                },
+                "files": [
+                    "src/Message/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@icicle.io"
+                }
+            ],
+            "description": "Asynchronous HTTP component for Icicle.",
+            "homepage": "http://icicle.io",
+            "keywords": [
+                "async",
+                "asynchronous",
+                "http"
+            ],
+            "time": "2016-03-09 03:43:17"
+        },
+        {
+            "name": "icicleio/icicle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icicleio/icicle.git",
+                "reference": "6ece7226e625ebd363ed301ccd92dabb36183777"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icicleio/icicle/zipball/6ece7226e625ebd363ed301ccd92dabb36183777",
+                "reference": "6ece7226e625ebd363ed301ccd92dabb36183777",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "suggest": {
+                "ext-ev": "Provides an event loop with better performance.",
+                "ext-pcntl": "Enables custom signal handling."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icicle\\": "src"
+                },
+                "files": [
+                    "src/functions.php",
+                    "src/Awaitable/functions.php",
+                    "src/Coroutine/functions.php",
+                    "src/Loop/functions.php",
+                    "src/Observable/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@icicle.io"
+                }
+            ],
+            "description": "Icicle is a PHP library for writing asynchronous code using synchronous coding techniques.",
+            "homepage": "http://icicle.io",
+            "keywords": [
+                "Socket",
+                "async",
+                "asynchronous",
+                "awaitable",
+                "coroutine",
+                "event",
+                "generator",
+                "interruptible",
+                "multitasking",
+                "network",
+                "promise",
+                "server",
+                "stream"
+            ],
+            "time": "2016-03-31 16:38:31"
+        },
+        {
+            "name": "icicleio/log",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icicleio/log.git",
+                "reference": "464acf8363d97b94fa2ddaa94525d96311365dd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icicleio/log/zipball/464acf8363d97b94fa2ddaa94525d96311365dd2",
+                "reference": "464acf8363d97b94fa2ddaa94525d96311365dd2",
+                "shasum": ""
+            },
+            "require": {
+                "icicleio/icicle": "^2.0",
+                "icicleio/stream": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icicle\\Log\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@icicle.io"
+                }
+            ],
+            "description": "Asynchronous logging interface for Icicle.",
+            "homepage": "http://icicle.io",
+            "keywords": [
+                "async",
+                "asynchronous",
+                "log"
+            ],
+            "time": "2016-02-18 06:24:55"
+        },
+        {
+            "name": "icicleio/socket",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icicleio/socket.git",
+                "reference": "d9cd7cfadf81afb1c2a50be91ca14230fcdeb938"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icicleio/socket/zipball/d9cd7cfadf81afb1c2a50be91ca14230fcdeb938",
+                "reference": "d9cd7cfadf81afb1c2a50be91ca14230fcdeb938",
+                "shasum": ""
+            },
+            "require": {
+                "icicleio/icicle": "~2.0",
+                "icicleio/stream": "~2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "ext-openssl": "Enables using SSL/TLS on stream sockets."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icicle\\Socket\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@icicle.io"
+                }
+            ],
+            "description": "Asynchronous stream socket server and client for Icicle.",
+            "homepage": "http://icicle.io",
+            "keywords": [
+                "Socket",
+                "async",
+                "asynchronous",
+                "client",
+                "server",
+                "stream"
+            ],
+            "time": "2016-02-06 03:28:49"
+        },
+        {
+            "name": "icicleio/stream",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icicleio/stream.git",
+                "reference": "a5d80f39a99dfadf02a1e9fc7d11d3fc31c42865"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icicleio/stream/zipball/a5d80f39a99dfadf02a1e9fc7d11d3fc31c42865",
+                "reference": "a5d80f39a99dfadf02a1e9fc7d11d3fc31c42865",
+                "shasum": ""
+            },
+            "require": {
+                "icicleio/icicle": "~2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "ext-mbstring": "Enables encoding-aware text stream reading."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icicle\\Stream\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@icicle.io"
+                }
+            ],
+            "description": "Asynchronous streams for Icicle.",
+            "homepage": "http://icicle.io",
+            "keywords": [
+                "async",
+                "asynchronous",
+                "stream"
+            ],
+            "time": "2016-02-21 19:19:43"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
             "source": {
@@ -954,16 +1344,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.3.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/ff76e1a660669bb56ba74ba0583fd8d41417bf39",
-                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -998,7 +1388,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-17 16:11:57"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "psr/log",
@@ -1092,16 +1482,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.14",
+            "version": "v3.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "cccf975c565ccd835bddc30a8fea5cdfe3357bf1"
+                "reference": "507a15f56fa7699f6cc8c2c7de4080b19ce22546"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/cccf975c565ccd835bddc30a8fea5cdfe3357bf1",
-                "reference": "cccf975c565ccd835bddc30a8fea5cdfe3357bf1",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/507a15f56fa7699f6cc8c2c7de4080b19ce22546",
+                "reference": "507a15f56fa7699f6cc8c2c7de4080b19ce22546",
                 "shasum": ""
             },
             "require": {
@@ -1150,7 +1540,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2016-03-01 10:50:07"
+            "time": "2016-03-25 17:08:27"
         },
         {
             "name": "sensiolabs/security-checker",
@@ -1652,16 +2042,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "09ae53562ce8b7842206efa217ec81442975f055"
+                "reference": "4e17cb2ecb3fd637097ebeb871fc0e2cbdd5e7ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/09ae53562ce8b7842206efa217ec81442975f055",
-                "reference": "09ae53562ce8b7842206efa217ec81442975f055",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/4e17cb2ecb3fd637097ebeb871fc0e2cbdd5e7ff",
+                "reference": "4e17cb2ecb3fd637097ebeb871fc0e2cbdd5e7ff",
                 "shasum": ""
             },
             "require": {
@@ -1744,10 +2134,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Bridge\\Doctrine\\": "src/Symfony/Bridge/Doctrine/",
-                    "Symfony\\Bridge\\Monolog\\": "src/Symfony/Bridge/Monolog/",
-                    "Symfony\\Bridge\\ProxyManager\\": "src/Symfony/Bridge/ProxyManager/",
-                    "Symfony\\Bridge\\Twig\\": "src/Symfony/Bridge/Twig/",
+                    "Symfony\\Bridge\\": "src/Symfony/Bridge/",
                     "Symfony\\Bundle\\": "src/Symfony/Bundle/",
                     "Symfony\\Component\\": "src/Symfony/Component/"
                 },
@@ -1777,7 +2164,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-02-28 21:33:29"
+            "time": "2016-03-30 10:41:14"
         },
         {
             "name": "twig/twig",
@@ -1844,16 +2231,16 @@
     "packages-dev": [
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.3",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "ee8ead4f78e21ed6c873d1cc19e141949d9ed493"
+                "reference": "a967db6a4cd5d276cf849d01b29dba559e149978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/ee8ead4f78e21ed6c873d1cc19e141949d9ed493",
-                "reference": "ee8ead4f78e21ed6c873d1cc19e141949d9ed493",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/a967db6a4cd5d276cf849d01b29dba559e149978",
+                "reference": "a967db6a4cd5d276cf849d01b29dba559e149978",
                 "shasum": ""
             },
             "require": {
@@ -1895,12 +2282,19 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-01-21 09:24:53"
+            "time": "2016-03-23 13:45:24"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "icicleio/http": 20,
+        "icicleio/icicle": 20,
+        "icicleio/stream": 20,
+        "icicleio/socket": 20,
+        "icicleio/dns": 20,
+        "icicleio/log": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
