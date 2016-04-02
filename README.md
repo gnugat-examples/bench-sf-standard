@@ -10,10 +10,6 @@ First prepare the environment:
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
     bin/console cache:clear -e=prod --no-debug
-    REACT_PORT=1337 php bin/react.php
-    REACT_PORT=1338 php bin/react.php
-    REACT_PORT=1339 php bin/react.php
-    REACT_PORT=1340 php bin/react.php
     curl http://bench-sf-standard.example.com/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
@@ -25,8 +21,8 @@ for 10 seconds with 10 concurrent clients:
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 3730.07#/sec |
-| Time per request                                  | 2.681ms      |
+| Requests per second                               | 3735.28#/sec |
+| Time per request                                  | 2.677ms      |
 | Time per request (across all concurrent requests) | 0.268ms      |
 
 > Benchmarks run with:
@@ -44,27 +40,47 @@ for 10 seconds with 10 concurrent clients:
 Since [PHP built in server](http://php.net/manual/en/features.commandline.webserver.php)
 runs on a single-threaded process, we need to use something else for our benchmarks.
 
-We've picked [nginx](https://www.nginx.com/) with [PHP-FPM](http://php-fpm.org/),
+We've picked [nginx](https://www.nginx.com/) with [Supervisord](http://supervisord.org/),
 but feel free to use another one. Here's the configuration used:
 
 ```
-upstream workers {
-    server localhost:1337;
-    server localhost:1338;
-    server localhost:1339;
-    server localhost:1340;
+upstream backend  {
+    server 127.0.0.1:5500 max_fails=1 fail_timeout=5s;
+    server 127.0.0.1:5501 max_fails=1 fail_timeout=5s;
+    server 127.0.0.1:5502 max_fails=1 fail_timeout=5s;
+    server 127.0.0.1:5503 max_fails=1 fail_timeout=5s;
 }
 
 server {
-    listen 80;
+    root /home/foobar/bench-sf-standard/web/;
     server_name bench-sf-standard.example.com;
-    root /home/gnucat/Projects/tmp/bench-sf-standard/web;
-
     location / {
-        proxy_pass http://workers;
+        try_files $uri @backend;
     }
-
-    error_log /home/gnucat/Projects/tmp/bench-sf-standard/var/logs/nginx_error.log;
-    access_log /home/gnucat/Projects/tmp/bench-sf-standard/var/logs/nginx_access.log;
+    location @backend {
+        proxy_pass http://backend;
+        proxy_next_upstream http_502 timeout error;
+        proxy_connect_timeout 1;
+        proxy_send_timeout 5;
+        proxy_read_timeout 5;
+    }
 }
+```
+
+And:
+
+```
+[program:bench-sf-standard]
+command=php bin/react.php
+environment=PORT=55%(process_num)02d
+process_name=%(program_name)s-%(process_num)d
+numprocs=4
+directory=/home/foobar/bench-sf-standard
+umask=022
+user=loic.chardonnet
+stdout_logfile=/var/log/supervisord/%(program_name)s-%(process_num)d.log              ; stdout log path, NONE for none; default AUTO
+stderr_logfile=/var/log/supervisord/%(program_name)s-%(process_num)d-error.log        ; stderr log path, NONE for none; default AUTO
+autostart=true
+autorestart=true
+startretries=3
 ```
