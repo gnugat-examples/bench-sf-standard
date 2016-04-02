@@ -10,29 +10,29 @@ First prepare the environment:
     rm -rf var/cache/* var/logs/* vendor
     composer install -o --no-dev
     bin/console cache:clear -e=prod --no-debug
-    ./vendor/bin/ppm start .
-    curl http://bench-sf-standard.example.com/
+    ./vendor/bin/ppm start . --concurrent-requests=1 --port=5500
+    curl http://bench-sf-standard.example.com:5500/
 
 And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
 for 10 seconds with 10 concurrent clients:
 
-    ab -c 10 -t 10 'http://bench-sf-standard.example.com/'
+    ab -c 10 -t 10 'http://bench-sf-standard.example.com:5500/'
 
 ## Results
 
 | Metric                                            | Value        |
 |---------------------------------------------------|--------------|
-| Requests per second                               | 560.69#/sec  |
-| Time per request                                  | 17.835ms     |
-| Time per request (across all concurrent requests) | 1.784ms      |
+| Requests per second                               | 954.30#/sec  |
+| Time per request                                  | 10.479ms     |
+| Time per request (across all concurrent requests) | 1.048ms      |
 
 > Benchmarks run with:
 >
-> * PHP 7 (`7.0.4-6+deb.sury.org~trusty+5`)
+> * PHP 7 (`7.0.4-7+deb.sury.org~trusty+2`)
 >   with [Zend OPcache](http://php.net/manual/en/book.opcache.php) enabled
 >   and *without* [Xdebug](https://xdebug.org/)
-> * Linux 3.13.0-83-generic, Ubuntu 14.04 LTS, x86_64
-> * [HP Compaq 8510p](http://www.cnet.com/products/hp-compaq-8510p-15-4-core-2-duo-t7700-vista-business-2-gb-ram-120-gb-hdd-series/specs/), with a SSD
+> * Linux 3.13.0-83-generic, Ubuntu 14.04.4 LTS, x86_64
+> * [Lenovo Yoga 13](http://shop.lenovo.com/il/en/laptops/lenovo/yoga/yoga-13/#tab-tech_specs), with core i7
 
 > **Note**: Profiling using blackfire failed.
 
