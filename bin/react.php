@@ -1,8 +1,10 @@
+#!/usr/bin/env php
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__.'/../app/autoload.php';
+
 
 $kernel = new AppKernel('prod', false);
 
@@ -14,6 +16,13 @@ foreach ($container->getServiceIds() as $serviceId) {
 }
 
 $app = function ($request, $response) use ($kernel) {
+    $headers = $request->getHeaders();
+    $enableProfiling = isset($headers['X-Blackfire-Query']);
+    if ($enableProfiling) {
+        $blackfire = new \Blackfire\Client();
+        $probe = $blackfire->createProbe();
+    }
+
     $sfRequest = Request::create(
         $request->getPath(),
         $request->getMethod()
@@ -24,6 +33,10 @@ $app = function ($request, $response) use ($kernel) {
     $response->end($sfResponse->getContent());
 
     $kernel->terminate($sfRequest, $sfResponse);
+
+    if ($enableProfiling) {
+        $blackfire->endProbe($probe);
+    }
 };
 
 $loop = React\EventLoop\Factory::create();

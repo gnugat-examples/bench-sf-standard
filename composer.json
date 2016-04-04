@@ -21,7 +21,8 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "react/react": "dev-master"
+        "react/react": "dev-master",
+        "blackfire/php-sdk": "^1.5"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^2.7"

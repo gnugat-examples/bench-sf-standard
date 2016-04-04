@@ -12,10 +12,14 @@ First prepare the environment:
     bin/console cache:clear -e=prod --no-debug
     curl http://bench-sf-standard.example.com/
 
-And use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
+Then use [Apache Benchmark](https://httpd.apache.org/docs/2.2/programs/ab.html)
 for 10 seconds with 10 concurrent clients:
 
     ab -c 10 -t 10 'http://bench-sf-standard.example.com/'
+
+Finally use [blackfire](https://blackfire.io/) to profile the request:
+
+    curl -H 'X-Blackfire-Query: enable' http://bench-sf-standard.example.com/
 
 ## Results
 
@@ -33,7 +37,32 @@ for 10 seconds with 10 concurrent clients:
 > * Linux 3.13.0-83-generic, Ubuntu 14.04.4 LTS, x86_64
 > * [Lenovo Yoga 13](http://shop.lenovo.com/il/en/laptops/lenovo/yoga/yoga-13/#tab-tech_specs), with core i7
 
-> **Note**: Profiling using blackfire failed.
+### Profiling
+
+| Metric              | Value        |
+|---------------------|--------------|
+| Requests per second | 3735.28#/sec |
+| Wall Time           | 1.43ms       |
+| CPU Time            | 1.07ms       |
+| I/O Time            | 0.366ms      |
+| Memory              | 73.4kB       |
+
+Profiling reveals that the most expensive part is getting the Event Dispatcher's
+listeners using the "lazy load" method:
+
+* called 8 times
+* inclusive wall time of 88µs (6.15%)
+    * inclusive I/O time of 0µs
+    * inclusive CPU time of 88µs
+    * inclusive memory use of 1.31kB
+
+Its main caller is `ContainerAwareEventDispatcher`:
+
+* `removeListener` (2 calls)
+* `getListeners` (6 calls)
+
+The cost can be explained by the fact that this event listeners always calls the
+container.
 
 ## Web Server Configuration
 
