@@ -42,27 +42,13 @@ Finally use [blackfire](https://blackfire.io/) to profile the request:
 | Metric              | Value        |
 |---------------------|--------------|
 | Requests per second | 3735.28#/sec |
-| Wall Time           | 1.43ms       |
-| CPU Time            | 1.07ms       |
-| I/O Time            | 0.366ms      |
-| Memory              | 73.4kB       |
+| Wall Time           | 1.09ms       |
+| CPU Time            |    1ms       |
+| I/O Time            | 1.08ms       |
+| Memory              |   65kB       |
 
-Profiling reveals that the most expensive part is getting the Event Dispatcher's
-listeners using the "lazy load" method:
-
-* called 8 times
-* inclusive wall time of 88µs (6.15%)
-    * inclusive I/O time of 0µs
-    * inclusive CPU time of 88µs
-    * inclusive memory use of 1.31kB
-
-Its main caller is `ContainerAwareEventDispatcher`:
-
-* `removeListener` (2 calls)
-* `getListeners` (6 calls)
-
-The cost can be explained by the fact that this event listeners always calls the
-container.
+Profiling reveals that the most of the time is spent in event listeners, which is
+to be expected since all the Symfony logic is here.
 
 ## Web Server Configuration
 

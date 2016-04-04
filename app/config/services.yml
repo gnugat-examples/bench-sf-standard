@@ -4,6 +4,8 @@ parameters:
 #    parameter_name: value
 
 services:
+    event_dispatcher:
+        class: 'AppBundle\Service\EventDispatcher'
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
